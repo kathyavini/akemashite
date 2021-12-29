@@ -1,0 +1,304 @@
+:root {
+    --top: 10; /* z-index */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.container {
+    height: min(96vh, 96vw);
+    width: min(96vh, 96vw);
+    background-image: url("./img/pretty-background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    overflow: hidden;
+    box-shadow: 0 5px 25px 5px rgba(0,0,0, .4);
+    transition: opacity 5s;
+}
+
+.container.envelope {
+    opacity: 1;
+    transition: opacity 0s;
+    height: min(80vh, 80vw);
+    width: min(40vh, 40vw);
+}
+
+.envelopeBox {
+    justify-self: center;
+    grid-area: 2 / 3 / 5 / 4;
+    background-color: white;
+    border: 4px solid #9f7928;
+    width: 150%;
+}
+
+.container.envelope:hover {
+    animation: shake 150ms 2 linear;
+}
+
+.container.envelope.clicked {
+    animation: fadeOut 1s forwards;
+}
+
+.container.clicked {
+    animation: fadeIn 1.5s forwards;
+}
+
+.mouse1 {
+    grid-area: 4 / 5;
+    background-image: url("./img/white-sideways-facing.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scaleX(-1) translateX(-50%);
+    opacity: 0;
+    animation: fadeIn 1s 6s forwards,
+            fadeOut 750ms 8s forwards;
+}
+
+.decoration {
+    grid-area: 1 / 4 / 3 / 6;
+    background-image: url("./img/decoration.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 35%;
+    margin-top: -30%;
+    animation: fadeIn 3s 10s forwards,
+            slideDown 3s 10s forwards;
+    opacity: 0;
+    position: relative;
+}
+
+.mouse2 {
+    position: absolute;
+    top: -5%;
+    left: 70%;
+    height: 100%;
+    width: 100%;
+    background-image: url("./img/black-pulling.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(-45deg);
+    z-index: var(--top);
+    animation: fadeIn 3s 10s forwards,
+        fadeOut 2s calc(10s + 3s) forwards,
+        slideUp 2s calc(10s + 3s) forwards;
+    opacity: 0;
+}
+
+.mochi {
+    grid-area: 2 / 1 / 6 / 6;
+    justify-self: center;
+    width: 80%;
+    background-image: url("./img/mochi-3.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+    opacity: 0;
+    animation: slideRight 5s 14s forwards steps(1),
+            fadeIn 2.5s 14s forwards 3;
+    -webkit-animation: slideRight 5s 14s forwards steps(1),
+            fadeIn 2.5s 14s forwards 3;
+}
+
+.mouse4 {
+    position: absolute;
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    right: 10%;
+    bottom: 0%;
+    background-image: url("./img/white-all-fours.svg");
+    background-size: 100%;
+    transform: scaleX(-1);
+    background-repeat: no-repeat;
+    animation: leanUp 5s 14s forwards steps(1),
+        leaveRight 2s calc(14s + 4.5s) forwards steps(1),
+        fadeOut 2s calc(14s + 6.5s) forwards;
+    -webkit-animation: leanUp 5s 14s forwards steps(1),
+        leaveRight 2s calc(14s + 4.5s) forwards steps(1),
+        fadeOut 2s calc(14s + 6.5s) forwards;
+}
+
+.mouse5 {
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    bottom: 0%;
+    left: 0%;
+    background-image: url("./img/realistic-tan.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: leanDown 5s 14s forwards steps(1),
+        leaveLeft 2s calc(14s + 5s) forwards steps(1),
+        fadeOut 2s calc(14s + 7s) forwards;
+    -webkit-animation: leanDown 5s 14s forwards steps(1),
+        leaveLeft 2s calc(14s + 5s) forwards steps(1),
+        fadeOut 2s calc(14s + 7s) forwards;
+}
+
+
+.mouse6 {
+    grid-area: 4 / 4 / 6 / 6;
+    background-image: url("./img/brown-up-away.ai.svg");
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scaleX(-1) translate(-10%, -5%);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 3s 24s forwards;
+}
+
+.fan {
+    position: absolute;
+    height: 40%;
+    width: 40%;
+    background-image: url("./img/fan.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(270deg);
+    right: 43%;
+    top: 30%;
+}
+
+.mouse7 {
+    grid-area: 4 / 1 / 6 / 3;
+    background-image: url("./img/black-facing.svg");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(0%, -5%);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 3s 26s forwards;
+}
+
+.daruma {
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    background-image: url("./img/daruma.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 21%;
+    bottom: 21%;
+}
+
+.messageBox {
+    grid-area: 1 / 1 / 4 / 6;
+    display: flex;
+    flex-flow: column nowrap;
+    z-index: calc(var(--top) + 1);
+    min-width: max-content;
+    min-height: max-content;
+    align-items: center;
+    margin-top: 4%;
+}
+
+.tiger {
+    background-image: url("./img/tiger2022.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 50%;
+    height: 30%;
+    opacity: 0;
+    animation: fadeIn 5s 31s forwards;
+}
+
+.text {
+    font-size: 2.5rem;
+    background-color: #FDB931;
+    background-image:
+        radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%), 
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeIn 5s 28s forwards;
+}
+
+
+
+@keyframes fadeIn{
+    0%      { opacity: 0; }
+    100%    { opacity: 1; }
+}
+
+@keyframes fadeOut{
+    0%      { opacity: 1; }
+    100%    { opacity: 0; }
+}
+
+@keyframes slideDown{
+    0%      { transform: translateY(-200%) }
+    100%    { transform: translateY(0) }
+}
+
+@keyframes slideUp{ /*specific for the mouse at 45% angle */
+    0%      { transform: rotate(-45deg) translateY(0)}
+    100%    { transform: rotate(-45deg) translate(115%, -75%) }
+}
+
+@keyframes slideRight{
+    0%      { transform: translateX(-90%); }
+    50%     { transform: translateX(-20%); }
+    100%    { transform: translateX(0); }
+}
+
+@keyframes leanUp {
+    0%      { transform: scaleX(-1) }
+    100%    { transform: scaleX(-1) rotate(-20deg) }
+}
+
+@keyframes leanDown {
+    0%      { transform: rotate(15deg) translateX(-10%) }
+    100%    { transform: rotate(0deg) }
+}
+
+@keyframes leaveLeft {
+    100%    { transform: scaleX(-1) translateX(50%) rotate(-5deg)};
+}
+
+@keyframes leaveRight {
+    100%    {transform: scaleX(1) translateX(100%) rotate(0deg) }
+}
+
+@keyframes shake {
+    0% {
+      transform: translate(2px, 0);
+    }
+    50% {
+      transform: translate(-2px, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+@media (hover: none) {
+    .text {
+        font-size: 1.5rem;
+    }
+}
