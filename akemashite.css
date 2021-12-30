@@ -82,6 +82,11 @@ body {
     position: relative;
 }
 
+@keyframes slideDown{
+    0%      { transform: translateY(-200%) }
+    100%    { transform: translateY(0) }
+}
+
 .mouse2 {
     position: absolute;
     top: -5%;
@@ -99,6 +104,11 @@ body {
     opacity: 0;
 }
 
+@keyframes slideUp{ 
+    0%      { transform: rotate(-45deg) translateY(0)}
+    100%    { transform: rotate(-45deg) translate(115%, -75%) }
+}
+
 .mochi {
     grid-area: 2 / 1 / 6 / 6;
     justify-self: center;
@@ -111,9 +121,14 @@ body {
     opacity: 0;
     animation: slideRight 5s 14s forwards steps(1),
             fadeIn 2.5s 14s forwards 3;
-    -webkit-animation: slideRight 5s 14s forwards steps(1),
-            fadeIn 2.5s 14s forwards 3;
 }
+
+@keyframes slideRight{
+    0%      { transform: translateX(-90%); }
+    50%     { transform: translateX(-20%); }
+    100%    { transform: translateX(0); }
+}
+
 
 .mouse4 {
     position: absolute;
@@ -121,35 +136,47 @@ body {
     height: 30%;
     width: 30%;
     right: 10%;
-    bottom: 0%;
+    bottom: 3%;
     background-image: url("./img/white-all-fours.svg");
     background-size: 100%;
     transform: scaleX(-1);
     background-repeat: no-repeat;
-    animation: leanUp 5s 14s forwards steps(1),
+    animation: pull 5s 14s forwards steps(1),
         leaveRight 2s calc(14s + 4.5s) forwards steps(1),
         fadeOut 2s calc(14s + 6.5s) forwards;
-    -webkit-animation: leanUp 5s 14s forwards steps(1),
-        leaveRight 2s calc(14s + 4.5s) forwards steps(1),
-        fadeOut 2s calc(14s + 6.5s) forwards;
+}
+
+@keyframes pull {
+    0%      { transform: scaleX(-1) }
+    100%    { transform: scaleX(-1) rotate(-20deg) }
+}
+
+@keyframes leaveRight {
+    100%    { transform: scaleX(1) translateX(100%) rotate(0deg) }
 }
 
 .mouse5 {
     position: absolute;
     height: 30%;
     width: 30%;
-    bottom: 0%;
-    left: 0%;
+    bottom: 5%;
+    left: 3%;
     background-image: url("./img/realistic-tan.svg");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    animation: leanDown 5s 14s forwards steps(1),
+    animation: push 5s 14s forwards steps(1),
         leaveLeft 2s calc(14s + 5s) forwards steps(1),
         fadeOut 2s calc(14s + 7s) forwards;
-    -webkit-animation: leanDown 5s 14s forwards steps(1),
-        leaveLeft 2s calc(14s + 5s) forwards steps(1),
-        fadeOut 2s calc(14s + 7s) forwards;
+}
+
+@keyframes push {
+    0%      { transform: rotate(15deg) }
+    100%    { transform: rotate(0deg) translateX(10%) }
+}
+
+@keyframes leaveLeft {
+    100%    { transform: scaleX(-1) translateX(50%) rotate(-5deg)};
 }
 
 
@@ -240,7 +267,7 @@ body {
 }
 
 
-
+/* General animations */
 @keyframes fadeIn{
     0%      { opacity: 0; }
     100%    { opacity: 1; }
@@ -249,40 +276,6 @@ body {
 @keyframes fadeOut{
     0%      { opacity: 1; }
     100%    { opacity: 0; }
-}
-
-@keyframes slideDown{
-    0%      { transform: translateY(-200%) }
-    100%    { transform: translateY(0) }
-}
-
-@keyframes slideUp{ /*specific for the mouse at 45% angle */
-    0%      { transform: rotate(-45deg) translateY(0)}
-    100%    { transform: rotate(-45deg) translate(115%, -75%) }
-}
-
-@keyframes slideRight{
-    0%      { transform: translateX(-90%); }
-    50%     { transform: translateX(-20%); }
-    100%    { transform: translateX(0); }
-}
-
-@keyframes leanUp {
-    0%      { transform: scaleX(-1) }
-    100%    { transform: scaleX(-1) rotate(-20deg) }
-}
-
-@keyframes leanDown {
-    0%      { transform: rotate(15deg) translateX(-10%) }
-    100%    { transform: rotate(0deg) }
-}
-
-@keyframes leaveLeft {
-    100%    { transform: scaleX(-1) translateX(50%) rotate(-5deg)};
-}
-
-@keyframes leaveRight {
-    100%    {transform: scaleX(1) translateX(100%) rotate(0deg) }
 }
 
 @keyframes shake {
@@ -295,10 +288,16 @@ body {
     100% {
       transform: translate(0, 0);
     }
-  }
+}
 
+/* Phone and tablet adjusts */
 @media (hover: none) {
     .text {
         font-size: 1.5rem;
+    }
+
+    .container.envelope {
+        height: min(96vh, 96vw);
+        width: min(48vh, 48vw);
     }
 }
